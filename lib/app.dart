@@ -55,7 +55,8 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(
           titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
           labelMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey)
-        )
+        ),
+        scaffoldBackgroundColor: Colors.green.shade50,
       ),
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder> {
