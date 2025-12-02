@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/utils/asset_paths.dart';
 import 'package:task_manager/ui/widgets/background.dart';
@@ -32,7 +31,7 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Background(child:
           Center(
-          child: SvgPicture.asset(AssetPaths.logoSvg)
+          child: Image.asset(AssetPaths.logoPng)
         ),
       ),
     );
