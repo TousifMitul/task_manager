@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/ui/screens/progress.dart';
 
 import '../widgets/tm_app_bar.dart';
+import 'Completed.dart';
+import 'cancelled.dart';
 import 'new_task_list.dart';
 
 class NavHolder extends StatefulWidget {
@@ -16,9 +19,9 @@ class _NavHolderState extends State<NavHolder> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
     NewTaskList(),
-    // ProgressTaskList(),
-    // CancelledTaskList(),
-    // CompletedTaskList(),
+    ProgressTaskList(),
+    CancelledTaskList(),
+    CompletedTaskList(),
   ];
 
   @override
