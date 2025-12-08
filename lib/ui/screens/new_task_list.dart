@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/ui/screens/add_new.dart';
 
 import '../widgets/TaskCard.dart';
 
@@ -33,10 +34,15 @@ class _NewTaskListState extends State<NewTaskList> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},
+      floatingActionButton: FloatingActionButton(onPressed: _onTapAddNew,
       child: Icon(Icons.add),),
     );
   }
+
+  void _onTapAddNew() {
+    Navigator.pushNamed(context, AddNew.name);
+  }
+
 
   Widget _buildupTaskSummary() {
     return SizedBox(

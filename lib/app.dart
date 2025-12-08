@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/ui/screens/add_new.dart';
 import 'package:task_manager/ui/screens/forgot_password.dart';
 import 'package:task_manager/ui/screens/navholder.dart';
 import 'package:task_manager/ui/screens/reset_password.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
         VerifyOTP.name: (context) => VerifyOTP(),
         ResetPassword.name: (context) => ResetPassword(),
         NavHolder.name: (context) => NavHolder(),
+        AddNew.name: (context) => AddNew(),
       },
       initialRoute: '/',
     );
