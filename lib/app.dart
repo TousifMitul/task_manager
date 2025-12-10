@@ -6,6 +6,7 @@ import 'package:task_manager/ui/screens/reset_password.dart';
 import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/screens/sign_up.dart';
 import 'package:task_manager/ui/screens/splash.dart';
+import 'package:task_manager/ui/screens/update_profile.dart';
 import 'package:task_manager/ui/screens/verifyotp.dart';
 
 class MyApp extends StatelessWidget {
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
         ResetPassword.name: (context) => ResetPassword(),
         NavHolder.name: (context) => NavHolder(),
         AddNew.name: (context) => AddNew(),
+        UpdateProfile.name: (context) => UpdateProfile(),
       },
       initialRoute: '/',
     );

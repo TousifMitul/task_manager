@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../screens/update_profile.dart';
 class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TMAppBar({super.key});
 
@@ -7,24 +9,29 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
     final textTheme = Theme.of(context).textTheme;
     return AppBar(
       backgroundColor: Colors.green,
-      title: Row(
-        spacing: 12,
-        children: [
-          CircleAvatar(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'UserName',
-                style: textTheme.bodyLarge?.copyWith(color: Colors.white),
-              ),
-              Text(
-                'useremail@email.com',
-                style: textTheme.bodyMedium?.copyWith(color: Colors.white),
-              ),
-            ],
-          ),
-        ],
+      title: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, UpdateProfile.name);
+        },
+        child: Row(
+          spacing: 12,
+          children: [
+            CircleAvatar(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'UserName',
+                  style: textTheme.bodyLarge?.copyWith(color: Colors.white),
+                ),
+                Text(
+                  'useremail@email.com',
+                  style: textTheme.bodyMedium?.copyWith(color: Colors.white),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

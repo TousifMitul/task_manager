@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/widgets/background.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class UpdateProfile extends StatefulWidget {
+  const UpdateProfile({super.key});
 
-  static const name = '/sign-up';
+  static const String name = '/update-profile';
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<UpdateProfile> createState() => _UpdateProfileState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
