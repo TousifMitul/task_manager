@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/widgets/background.dart';
 
+import '../widgets/photo_picker.dart';
 import '../widgets/tm_app_bar.dart';
 
 class UpdateProfile extends StatefulWidget {
@@ -18,7 +19,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TMAppBar(),
+      appBar: TMAppBar(
+        fromUpdateProfile: true,
+      ),
       body: Background(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -32,13 +35,16 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 8),
+              GestureDetector(
+                  onTap: () {},
+                  child: PhotoPicker()),
               TextFormField(decoration: InputDecoration(hintText: 'Email')),
               TextFormField(decoration: InputDecoration(hintText: 'First Name')),
               TextFormField(decoration: InputDecoration(hintText: 'Last Name')),
               TextFormField(decoration: InputDecoration(hintText: 'Mobile')),
               TextFormField(decoration: InputDecoration(hintText: 'Password')),
               FilledButton(
-                onPressed: _onTapSignUp,
+                onPressed: _onTapUpdate,
                 child: Icon(Icons.arrow_circle_right_outlined),
               ),
             ],
@@ -47,6 +53,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
       ),
     );
   }
-  void _onTapSignIn(){Navigator.pushNamed(context,SignIn.name);}
-  void _onTapSignUp(){}
+  void _onTapUpdate(){}
 }
+
+
