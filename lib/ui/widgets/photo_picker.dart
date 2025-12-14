@@ -19,7 +19,7 @@ class PhotoPicker extends StatelessWidget {
         children: [
           Container(
             height: 50,
-            width: 100,
+            width: 80,
             decoration: BoxDecoration(
               color: Colors.grey,
               borderRadius: BorderRadius.only(
