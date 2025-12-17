@@ -82,9 +82,20 @@ class _SignUpState extends State<SignUp> {
                       }
                       return null;
                     },
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(hintText: 'Mobile'),
                   ),
                   TextFormField(
+                    controller: _passwordController,
+                    validator: (String? value) {
+                      if (value?.isEmpty?? true) {
+                        return 'Please enter your password';
+                      }
+                      if (value!.length < 6) {
+                        return 'Password must be at least 6 characters';
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(hintText: 'Password'),
                   ),
                   FilledButton(
