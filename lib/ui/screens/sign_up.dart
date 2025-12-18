@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:task_manager/data/service/network_caller.dart';
 import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/widgets/background.dart';
 
@@ -20,6 +21,9 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _signUpInProgress = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +90,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(hintText: 'Mobile'),
                   ),
                   TextFormField(
+                    obscureText: false,
                     controller: _passwordController,
                     validator: (String? value) {
                       if (value?.isEmpty?? true) {
@@ -139,5 +144,22 @@ class _SignUpState extends State<SignUp> {
     Navigator.pushNamed(context, SignIn.name);
   }
 
-  void _onTapSignUp() {}
+  void _onTapSignUp() {
+    if (_formKey.currentState!.validate()) {
+
+    }
+  }
+  Future<void> _signUp() async {
+    _signUpInProgress = true;
+    setState(() {});
+    Map<String, dynamic> requestBody = {
+      "email": _emailController.text.trim(),
+      "firstName": _firstNameController.text.trim(),
+      "lastName": _lastNameController.text.trim(),
+      "mobile": _mobileController.text.trim(),
+      "password": _passwordController
+    }
+
+    NetworkResponse response= await NetworkCaller.postRequest(url, body)
+  }
 }

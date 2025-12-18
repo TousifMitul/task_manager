@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
 class NetworkCaller {
-  Future<NetworkResponse> getRequest(String url) async {
+  static Future<NetworkResponse> getRequest(String url) async {
     try {
       Uri uri = Uri.parse(url);
       _logRequest(url);
@@ -32,10 +32,10 @@ class NetworkCaller {
     }
   }
 
-  Future<NetworkResponse> postRequest(
-    String url,
+  static Future<NetworkResponse> postRequest(
+    String url, {
     Map<String, dynamic>? body,
-  ) async {
+  }) async {
     try {
       Uri uri = Uri.parse(url);
       _logRequest(url, body: body);
@@ -67,11 +67,14 @@ class NetworkCaller {
     }
   }
 
-  void _logRequest(String url, {Map<String, dynamic>? body}) {
-    debugPrint('URL: $url\n' 'Body: $body');
+  static void _logRequest(String url, {Map<String, dynamic>? body}) {
+    debugPrint(
+      'URL: $url\n'
+      'Body: $body',
+    );
   }
 
-  void _logResponse(String url, Response response) {
+  static void _logResponse(String url, Response response) {
     debugPrint(
       'URL: $url\n'
       'Status Code: ${response.statusCode}\n'
