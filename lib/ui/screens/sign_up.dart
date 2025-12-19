@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/data/service/network_caller.dart';
 import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/widgets/background.dart';
+import 'package:task_manager/ui/widgets/snack_bar_msg.dart';
+
+import '../../data/utils/urls.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -23,7 +26,6 @@ class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _signUpInProgress = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +83,7 @@ class _SignUpState extends State<SignUp> {
                   TextFormField(
                     controller: _mobileController,
                     validator: (String? value) {
-                      if (value?.trim().isEmpty?? true) {
+                      if (value?.trim().isEmpty ?? true) {
                         return 'Please enter your mobile number';
                       }
                       return null;
@@ -93,7 +95,7 @@ class _SignUpState extends State<SignUp> {
                     obscureText: false,
                     controller: _passwordController,
                     validator: (String? value) {
-                      if (value?.isEmpty?? true) {
+                      if (value?.isEmpty ?? true) {
                         return 'Please enter your password';
                       }
                       if (value!.length < 6) {
@@ -146,9 +148,10 @@ class _SignUpState extends State<SignUp> {
 
   void _onTapSignUp() {
     if (_formKey.currentState!.validate()) {
-
+      _signUp();
     }
   }
+
   Future<void> _signUp() async {
     _signUpInProgress = true;
     setState(() {});
@@ -157,9 +160,20 @@ class _SignUpState extends State<SignUp> {
       "firstName": _firstNameController.text.trim(),
       "lastName": _lastNameController.text.trim(),
       "mobile": _mobileController.text.trim(),
-      "password": _passwordController
-    }
+      "password": _passwordController.text,
+    };
 
-    NetworkResponse response= await NetworkCaller.postRequest(url, body)
+    NetworkResponse response = await NetworkCaller.postRequest(
+      Urls.registration,
+      body: requestBody,
+    );
+    _signUpInProgress = false;
+    setState(() {});
+
+    if (response.isSuccess) {
+      showSnackBarMsg(context, 'Registration Successful! Please Sign in.');
+    } else {
+      showSnackBarMsg(context, response.errorMessage);
+    }
   }
 }

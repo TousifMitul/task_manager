@@ -21,6 +21,7 @@ class NetworkCaller {
         return NetworkResponse(
           isSuccess: false,
           responseCode: response.statusCode,
+          errorMessage: decodedData['data'],
         );
       }
     } catch (e) {
@@ -56,6 +57,7 @@ class NetworkCaller {
         return NetworkResponse(
           isSuccess: false,
           responseCode: response.statusCode,
+          errorMessage: decodedData['data'],
         );
       }
     } catch (e) {
@@ -86,13 +88,13 @@ class NetworkCaller {
 class NetworkResponse {
   final bool isSuccess;
   final int responseCode;
-  final String? errorMessage;
+  final String errorMessage;
   final dynamic body;
 
   NetworkResponse({
     required this.isSuccess,
     required this.responseCode,
-    this.errorMessage,
+    this.errorMessage ='Something went wrong',
     this.body,
   });
 }
