@@ -105,9 +105,15 @@ class _SignUpState extends State<SignUp> {
                     },
                     decoration: InputDecoration(hintText: 'Password'),
                   ),
-                  FilledButton(
-                    onPressed: _onTapSignUp,
-                    child: Icon(Icons.arrow_circle_right_outlined),
+                  Visibility(
+                     visible: _signUpInProgress==false,
+                    replacement: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    child: FilledButton(
+                      onPressed: _onTapSignUp,
+                      child: Icon(Icons.arrow_circle_right_outlined),
+                    ),
                   ),
                   SizedBox(height: 24),
                   Center(
