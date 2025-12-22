@@ -177,9 +177,26 @@ class _SignUpState extends State<SignUp> {
     setState(() {});
 
     if (response.isSuccess) {
+      _clearTextFields();
       showSnackBarMsg(context, 'Registration Successful! Please Sign in.');
     } else {
       showSnackBarMsg(context, response.errorMessage);
     }
+  }
+  void _clearTextFields() {
+    _emailController.clear();
+    _firstNameController.clear();
+    _lastNameController.clear();
+    _mobileController.clear();
+    _passwordController.clear();
+  }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _mobileController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }
