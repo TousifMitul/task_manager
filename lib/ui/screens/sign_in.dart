@@ -5,6 +5,9 @@ import 'package:task_manager/ui/screens/navholder.dart';
 import 'package:task_manager/ui/screens/sign_up.dart';
 import 'package:task_manager/ui/widgets/background.dart';
 
+import '../../data/service/network_caller.dart';
+import '../../data/utils/urls.dart';
+import '../widgets/snack_bar_msg.dart';
 import 'forgot_password.dart';
 
 class SignIn extends StatefulWidget {
@@ -20,6 +23,9 @@ class _SignInState extends State<SignIn> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _signInInProgress = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +110,26 @@ class _SignInState extends State<SignIn> {
   }
 
   void _onTapSignIn() {
-    Navigator.pushReplacementNamed(context, NavHolder.name);
+    if (_formKey.currentState!.validate()) {
+
+    }
+  }
+  Future <void> _signIn() async {
+    _signInInProgress = true;
+    setState(() {});
+    Map<String, dynamic> requestBody = {
+      "email": _emailController.text.trim(),
+      "password": _passwordController.text,
+    };
+    final NetworkResponse response = await NetworkCaller.postRequest(
+      Urls.login,
+      body: requestBody,);
+    if (response.isSuccess) {
+      Navigator.pushReplacementNamed(context, NavHolder.name);
+    } else {
+      showSnackBarMsg(context, response.errorMessage);
+    }
+
   }
 
   void _onTapForgotPassword() {
