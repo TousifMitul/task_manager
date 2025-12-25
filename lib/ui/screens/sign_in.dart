@@ -70,9 +70,15 @@ class _SignInState extends State<SignIn> {
                     return null;
                   },
                   decoration: InputDecoration(hintText: 'Password')),
-              FilledButton(
-                onPressed: _onTapSignIn,
-                child: Icon(Icons.arrow_circle_right_outlined),
+              Visibility(
+                visible: _signInInProgress==false,
+                replacement: Center(
+                  child: CircularProgressIndicator(),
+                ),
+                child: FilledButton(
+                  onPressed: _onTapSignIn,
+                  child: Icon(Icons.arrow_circle_right_outlined),
+                ),
               ),
               SizedBox(height: 24),
               Center(
