@@ -5,8 +5,10 @@ import 'package:task_manager/ui/screens/navholder.dart';
 import 'package:task_manager/ui/screens/sign_up.dart';
 import 'package:task_manager/ui/widgets/background.dart';
 
+import '../../data/models/user_model.dart';
 import '../../data/service/network_caller.dart';
 import '../../data/utils/urls.dart';
+import '../controllers/auth_controller.dart';
 import '../widgets/snack_bar_msg.dart';
 import 'forgot_password.dart';
 
@@ -131,6 +133,9 @@ class _SignInState extends State<SignIn> {
       Urls.login,
       body: requestBody,);
     if (response.isSuccess) {
+      UserModel userModel = UserModel.fromJson(response.body['body']);
+      String accessToken = response.body['token'];
+      await AuthController.saveUserData(accessToken, userModel);
       Navigator.pushReplacementNamed(context, NavHolder.name);
     } else {
       showSnackBarMsg(context, response.errorMessage);
