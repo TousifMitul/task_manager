@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/ui/screens/sign_in.dart';
 import 'package:task_manager/ui/utils/asset_paths.dart';
 import 'package:task_manager/ui/widgets/background.dart';
+
+import '../controllers/auth_controller.dart';
+import 'navholder.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -21,8 +25,13 @@ class _SplashState extends State<Splash> {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, '/sign-in');
-
+    bool isLoggedIn = await AuthController.isLoggedIn();
+    if (isLoggedIn) {
+      await AuthController.getUserData();
+      Navigator.pushReplacementNamed(context, NavHolder.name);
+    } else {
+      Navigator.pushReplacementNamed(context, SignIn.name);
+    }
   }
 
   @override
