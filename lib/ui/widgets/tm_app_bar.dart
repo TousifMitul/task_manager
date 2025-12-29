@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/sign_in.dart';
 import '../screens/update_profile.dart';
 class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TMAppBar({super.key, this.fromUpdateProfile=false});
@@ -36,6 +37,15 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
           ],
         ),
       ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(context,
+                SignIn.name, (predicate)=>false);
+          },
+          icon: Icon(Icons.logout),
+        ),
+      ],
     );
   }
 
