@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../controllers/auth_controller.dart';
 import '../screens/sign_in.dart';
 import '../screens/update_profile.dart';
 class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -39,7 +40,8 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {
+          onPressed: () async {
+            await AuthController.logout();
             Navigator.pushNamedAndRemoveUntil(context,
                 SignIn.name, (predicate)=>false);
           },

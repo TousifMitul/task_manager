@@ -33,4 +33,9 @@ class AuthController {
     String? token = sharedPreferences.getString(_tokenKey);
     return token != null;
   }
+  static Future<void> logout() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.clear();
+  }
+
 }
