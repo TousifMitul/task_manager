@@ -46,7 +46,6 @@ class _AddNewState extends State<AddNew> {
                         }
                         return null;
                       }
-
                     ),
                   ),
                   TextFormField(
