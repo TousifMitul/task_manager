@@ -25,6 +25,7 @@ class _AddNewState extends State<AddNew> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(24),
+
             child: Form(
               key: _formKey,
               child: Column(
