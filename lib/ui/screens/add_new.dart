@@ -44,6 +44,7 @@ class _AddNewState extends State<AddNew> {
                             .isEmpty ?? true) {
                           return 'Please enter a title';
                         }
+
                         return null;
                       }
                     ),
