@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/ui/widgets/background.dart';
 
+import '../../data/service/network_caller.dart';
+import '../../data/utils/urls.dart';
 import '../widgets/tm_app_bar.dart';
 
 class AddNew extends StatefulWidget {
@@ -16,6 +18,8 @@ class _AddNewState extends State<AddNew> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _addNewTaskInProgress = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +63,12 @@ class _AddNewState extends State<AddNew> {
                     ,
                   ),
                   SizedBox(height: 8,),
-                  FilledButton(
-                    onPressed: _onTapSubmit,
-                    child: Icon(Icons.arrow_circle_right_outlined),
+                  Visibility(
+                    visible: _addNewTaskInProgress==false,
+                    child: FilledButton(
+                      onPressed: _onTapSubmit,
+                      child: Icon(Icons.arrow_circle_right_outlined),
+                    ),
                   ),
                 ]
               ),
@@ -76,7 +83,16 @@ class _AddNewState extends State<AddNew> {
 
     }
   }
-  Future<void> _addNewTask() async{}
+  Future<void> _addNewTask() async{
+    _addNewTaskInProgress=true;
+    setState(() {});
+    Map<String, dynamic> requestBody = {
+      "title": _titleController.text.trim(),
+      "description": _descriptionController.text.trim(),
+      "status": "new",
+    };
+    final NetworkResponse response = await NetworkCaller.postRequest(Urls.createNewTask, body:requestBody );
+  }
 
   @override
   void dispose() {
