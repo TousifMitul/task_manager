@@ -39,9 +39,7 @@ class _AddNewState extends State<AddNew> {
                     decoration: InputDecoration(
                       hintText: 'Title'),
                       validator: (String? value) {
-                        if (value
-                            ?.trim()
-                            .isEmpty ?? true) {
+                        if (value?.trim().isEmpty ?? true) {
                           return 'Please enter a title';
                         }
                         return null;
@@ -49,13 +47,20 @@ class _AddNewState extends State<AddNew> {
                     ),
                   TextFormField(
                     maxLines: 5,
+                    controller: _descriptionController,
                     decoration: InputDecoration(
-                      hintText: 'Description',
-                    ),
+                      hintText: 'Description'),
+                        validator: (String? value) {
+                          if (value?.trim().isEmpty ?? true) {
+                            return 'Please enter a title';
+                          }
+                          return null;
+                        }
+                    ,
                   ),
                   SizedBox(height: 8,),
                   FilledButton(
-                    onPressed: () {},
+                    onPressed: _onTapSubmit,
                     child: Icon(Icons.arrow_circle_right_outlined),
                   ),
                 ]
@@ -65,5 +70,18 @@ class _AddNewState extends State<AddNew> {
         ),
       ),
     );
+  }
+  void _onTapSubmit(){
+    if (_formKey.currentState!.validate()) {
+
+    }
+  }
+  Future<void> _addNewTask() async{}
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
   }
 }
