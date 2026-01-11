@@ -91,7 +91,7 @@ class _AddNewState extends State<AddNew> {
       "description": _descriptionController.text.trim(),
       "status": "new",
     };
-    final NetworkResponse response = await NetworkCaller.postRequest(Urls.createNewTask, body:requestBody );
+    final NetworkResponse response = await NetworkCaller.postRequest(Urls.createNewTask, body:requestBody);
   }
 
   @override
