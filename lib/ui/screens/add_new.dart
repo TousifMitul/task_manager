@@ -32,45 +32,51 @@ class _AddNewState extends State<AddNew> {
             child: Form(
               key: _formKey,
               child: Column(
-                spacing: 8,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 36,),
-                  Text('Add New Task', style: TextTheme.of(context).titleLarge),
-                  SizedBox(height: 8,),
-                  TextFormField(
-                    controller: _titleController,
-                    decoration: InputDecoration(
-                      hintText: 'Title'),
-                      validator: (String? value) {
-                        if (value?.trim().isEmpty ?? true) {
-                          return 'Please enter a title';
-                        }
-                        return null;
-                      }
-                    ),
-                  TextFormField(
-                    maxLines: 5,
-                    controller: _descriptionController,
-                    decoration: InputDecoration(
-                      hintText: 'Description'),
+                  spacing: 8,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 36,),
+                    Text('Add New Task', style: TextTheme
+                        .of(context)
+                        .titleLarge),
+                    SizedBox(height: 8,),
+                    TextFormField(
+                        controller: _titleController,
+                        decoration: InputDecoration(
+                            hintText: 'Title'),
                         validator: (String? value) {
-                          if (value?.trim().isEmpty ?? true) {
+                          if (value
+                              ?.trim()
+                              .isEmpty ?? true) {
                             return 'Please enter a title';
                           }
                           return null;
                         }
-                    ,
-                  ),
-                  SizedBox(height: 8,),
-                  Visibility(
-                    visible: _addNewTaskInProgress==false,
-                    child: FilledButton(
-                      onPressed: _onTapSubmit,
-                      child: Icon(Icons.arrow_circle_right_outlined),
                     ),
-                  ),
-                ]
+                    TextFormField(
+                      maxLines: 5,
+                      controller: _descriptionController,
+                      decoration: InputDecoration(
+                          hintText: 'Description'),
+                      validator: (String? value) {
+                        if (value
+                            ?.trim()
+                            .isEmpty ?? true) {
+                          return 'Please enter a title';
+                        }
+                        return null;
+                      }
+                      ,
+                    ),
+                    SizedBox(height: 8,),
+                    Visibility(
+                      visible: _addNewTaskInProgress == false,
+                      child: FilledButton(
+                        onPressed: _onTapSubmit,
+                        child: Icon(Icons.arrow_circle_right_outlined),
+                      ),
+                    ),
+                  ]
               ),
             ),
           ),
@@ -78,20 +84,23 @@ class _AddNewState extends State<AddNew> {
       ),
     );
   }
-  void _onTapSubmit(){
+
+  void _onTapSubmit() {
     if (_formKey.currentState!.validate()) {
 
     }
   }
-  Future<void> _addNewTask() async{
-    _addNewTaskInProgress=true;
+
+  Future<void> _addNewTask() async {
+    _addNewTaskInProgress = true;
     setState(() {});
     Map<String, dynamic> requestBody = {
       "title": _titleController.text.trim(),
       "description": _descriptionController.text.trim(),
       "status": "new",
     };
-    final NetworkResponse response = await NetworkCaller.postRequest(Urls.createNewTask, body:requestBody);
+    final NetworkResponse response = await NetworkCaller.postRequest(
+        Urls.createNewTask, body: requestBody);
   }
 
   @override
