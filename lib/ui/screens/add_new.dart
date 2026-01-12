@@ -36,18 +36,14 @@ class _AddNewState extends State<AddNew> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 36,),
-                    Text('Add New Task', style: TextTheme
-                        .of(context)
-                        .titleLarge),
+                    Text('Add New Task', style: TextTheme.of(context).titleLarge),
                     SizedBox(height: 8,),
                     TextFormField(
                         controller: _titleController,
                         decoration: InputDecoration(
                             hintText: 'Title'),
                         validator: (String? value) {
-                          if (value
-                              ?.trim()
-                              .isEmpty ?? true) {
+                          if (value?.trim().isEmpty ?? true) {
                             return 'Please enter a title';
                           }
                           return null;
@@ -59,9 +55,7 @@ class _AddNewState extends State<AddNew> {
                       decoration: InputDecoration(
                           hintText: 'Description'),
                       validator: (String? value) {
-                        if (value
-                            ?.trim()
-                            .isEmpty ?? true) {
+                        if (value?.trim().isEmpty ?? true) {
                           return 'Please enter a title';
                         }
                         return null;
