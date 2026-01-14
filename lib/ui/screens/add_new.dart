@@ -60,7 +60,7 @@ class _AddNewState extends State<AddNew> {
                         }
                         return null;
                       }
-                      ,
+
                     ),
                     SizedBox(height: 8,),
                     Visibility(
