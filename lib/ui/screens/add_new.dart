@@ -87,7 +87,6 @@ class _AddNewState extends State<AddNew> {
   Future<void> _addNewTask() async {
     _addNewTaskInProgress = true;
     setState(() {});
-
     Map<String, dynamic> requestBody = {
       "title": _titleController.text.trim(),
       "description": _descriptionController.text.trim(),
