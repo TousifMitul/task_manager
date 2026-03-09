@@ -17,7 +17,6 @@ class AddNew extends StatefulWidget {
 class _AddNewState extends State<AddNew> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _addNewTaskInProgress = false;
 
