@@ -79,8 +79,7 @@ class _AddNewState extends State<AddNew> {
   }
 
   void _onTapSubmit() {
-    if (_formKey.currentState!.validate()) {
-    }
+    if (_formKey.currentState!.validate()) {}
   }
 
   Future<void> _addNewTask() async {
