@@ -80,7 +80,6 @@ class _AddNewState extends State<AddNew> {
 
   void _onTapSubmit() {
     if (_formKey.currentState!.validate()) {
-
     }
   }
 
