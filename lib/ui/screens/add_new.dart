@@ -44,7 +44,7 @@ class _AddNewState extends State<AddNew> {
                       if (value?.trim().isEmpty ?? true) {
                         return 'Please enter a title';
                       }
-                      return null;
+                      return null; 
                     },
                   ),
                   TextFormField(
