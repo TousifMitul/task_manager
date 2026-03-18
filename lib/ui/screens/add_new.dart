@@ -33,7 +33,6 @@ class _AddNewState extends State<AddNew> {
               child: Column(
                 spacing: 8,
                 crossAxisAlignment: CrossAxisAlignment.start,
-
                 children: [
                   SizedBox(height: 36),
                   Text('Add New Task', style: TextTheme.of(context).titleLarge),
