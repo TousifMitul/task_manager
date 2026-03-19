@@ -59,6 +59,7 @@ class _AddNewState extends State<AddNew> {
                     },
                   ),
                   SizedBox(height: 8),
+
                   Visibility(
                     visible: _addNewTaskInProgress == false,
                     child: FilledButton(
