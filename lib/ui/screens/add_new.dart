@@ -84,7 +84,6 @@ class _AddNewState extends State<AddNew> {
     setState(() {});
     Map<String, dynamic> requestBody = {
       "title": _titleController.text.trim(),
-
       "description": _descriptionController.text.trim(),
       "status": "new",
     };
