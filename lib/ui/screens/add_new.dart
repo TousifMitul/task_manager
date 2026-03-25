@@ -36,7 +36,6 @@ class _AddNewState extends State<AddNew> {
                 children: [
                   SizedBox(height: 36),
                   Text('Add New Task', style: TextTheme.of(context).titleLarge),
-
                   SizedBox(height: 8),
                   TextFormField(
                     controller: _titleController,
