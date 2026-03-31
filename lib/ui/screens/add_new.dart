@@ -40,6 +40,7 @@ class _AddNewState extends State<AddNew> {
                   TextFormField(
                     controller: _titleController,
                     decoration: InputDecoration(hintText: 'Title'),
+
                     validator: (String? value) {
                       if (value?.trim().isEmpty ?? true) {
                         return 'Please enter a title';
