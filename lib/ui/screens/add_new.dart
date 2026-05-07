@@ -41,7 +41,6 @@ class _AddNewState extends State<AddNew> {
                     controller: _titleController,
 
 
-
                     decoration: InputDecoration(hintText: 'Title'),
                     validator: (String? value) {
                       if (value?.trim().isEmpty ?? true) {
