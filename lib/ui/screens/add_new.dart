@@ -42,7 +42,6 @@ class _AddNewState extends State<AddNew> {
 
 
 
-
                     decoration: InputDecoration(hintText: 'Title'),
                     validator: (String? value) {
                       if (value?.trim().isEmpty ?? true) {
