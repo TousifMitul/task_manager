@@ -63,7 +63,6 @@ class _AddNewState extends State<AddNew> {
                     visible: _addNewTaskInProgress == false,
                     child: FilledButton(
                       onPressed: _onTapSubmit,
-
                       child: Icon(Icons.arrow_circle_right_outlined),
                     ),
                   ),
