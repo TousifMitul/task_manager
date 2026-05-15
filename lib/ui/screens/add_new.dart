@@ -39,7 +39,6 @@ class _AddNewState extends State<AddNew> {
                   SizedBox(height: 8),
                   TextFormField(
                     controller: _titleController,
-
                     decoration: InputDecoration(hintText: 'Title'),
                     validator: (String? value) {
                       if (value?.trim().isEmpty ?? true) {
