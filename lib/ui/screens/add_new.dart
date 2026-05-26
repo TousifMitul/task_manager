@@ -52,6 +52,7 @@ class _AddNewState extends State<AddNew> {
                     controller: _descriptionController,
                     decoration: InputDecoration(hintText: 'Description'),
                     validator: (String? value) {
+
                       if (value?.trim().isEmpty ?? true) {
                         return 'Please enter a title';
                       }
