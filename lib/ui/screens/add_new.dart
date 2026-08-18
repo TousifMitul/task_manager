@@ -10,9 +10,9 @@ class AddNew extends StatefulWidget {
 
   static const name = '/add-new';
 
-  @override
+
   State<AddNew> createState() => _AddNewState();
-}
+} @override
 
 class _AddNewState extends State<AddNew> {
   final TextEditingController _titleController = TextEditingController();
