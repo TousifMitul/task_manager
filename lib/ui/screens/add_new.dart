@@ -38,7 +38,6 @@ class _AddNewState extends State<AddNew> {
                   Text('Add New Task', style: TextTheme.of(context).titleLarge),
                   SizedBox(height: 8),
                   TextFormField(
-                    
                     controller: _titleController,
                     decoration: InputDecoration(hintText: 'Title'),
                     validator: (String? value) {
